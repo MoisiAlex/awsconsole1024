@@ -59,7 +59,7 @@
 
               // Begin accessing JSON data here
               let data = JSON.parse(this.response);
-
+                console.log(request);
                    return new Promise(function(resolve, reject) {
                         if (request.status != 200) return reject(null);
                         resolve(data);
