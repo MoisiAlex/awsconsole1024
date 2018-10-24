@@ -60,20 +60,17 @@
               // Begin accessing JSON data here
               let data = JSON.parse(this.response);
 
-              if (request.status >= 200 && request.status < 400) {
-                 console.log(data);
-                 return(data);            
-              } else {
-                console.log('error');
-                return(null);  
+                   return new Promise(function(resolve, reject) {
+                        if (request.status != 200) return reject(null);
+                        resolve(data);
+                       });
               }
-            }
         request.send();
     }
 
 
-    function updateQueueAttribute(){
-        let data = getCurrentMetrics();
+    async function  updateQueueAttribute (){
+        let data = await getCurrentMetrics();
         document.getElementById('calls').innerHTML = data.CONTACTS_IN_QUEUE;
         document.getElementById('lwt').innerHTML = millisToMinAndSec(data.OLDEST_CONTACT_AGE);
         document.getElementById('availableAgents').innerHTML = data.AGENTS_AVAILABLE;
