@@ -62,7 +62,7 @@
                 console.log(request);
                    return new Promise(function(resolve, reject) {
                         if (request.status != 200) return reject(null);
-                        resolve(data);
+                        resolve(data.response);
                        });
               }
         request.send();
