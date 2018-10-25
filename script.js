@@ -58,11 +58,13 @@
             request.onload = function () {
 
               // Begin accessing JSON data here
-              let data = JSON.parse(this.response);
+              let responseData = JSON.parse(this.response);
+                
                 console.log(request);
+                console.log(responseData);
                    return new Promise(function(resolve, reject) {
                         if (request.status != 200) return reject(null);
-                        resolve(data.response);
+                        resolve(responseData);
                        });
               }
         request.send();
